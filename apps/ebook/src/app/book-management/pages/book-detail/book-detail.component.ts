@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 
-import * as Facade from '../../../store';
+import * as Facade from "../../../store";
 @Component({
-  selector: 'assignment-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.scss'],
+  selector: "assignment-book-detail",
+  templateUrl: "./book-detail.component.html",
+  styleUrls: ["./book-detail.component.scss"],
 })
 export class BookDetailComponent implements OnInit {
   bookId: string;
@@ -18,17 +18,18 @@ export class BookDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.bookId = this.route.snapshot.paramMap.get('id');
+    this.bookId = this.route.snapshot.paramMap.get("id");
     this.facade.getBookDetailsWithId(this.bookId).subscribe((data) => {
       this.book = data;
     });
   }
 
   purchaseBook(): void {
-    this.router.navigate(['/buy', this.bookId]);
+    this.router.navigate(["/buy", this.bookId]);
   }
 
   addToCart(): void {
+    console.log("add to cart");
     this.facade.addBookToCartList(this.bookId);
   }
 }
