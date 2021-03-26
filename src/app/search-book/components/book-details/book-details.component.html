@@ -1,0 +1,31 @@
+<mat-card>
+  <div class="header-image">
+    <div class="title-header">
+      <mat-card-header>
+        <mat-card-title>{{bookDetails.volumeInfo?.title}}</mat-card-title>
+        <mat-card-subtitle>{{bookDetails.volumeInfo?.subtitle}}</mat-card-subtitle>
+      </mat-card-header>
+    </div>
+    <img mat-card-image [src]="bookDetails.volumeInfo.imageLinks?.thumbnail" alt="Photo of {{bookDetails.volumeInfo.title}}">
+  </div>
+    
+  <mat-card-content>
+    <p><span style="font-weight: bold;"> Rating </span>: Start</p>
+    <p><span style="font-weight: bold;"> Publisher </span>: {{bookDetails.volumeInfo?.publisher}}</p>
+    <p><span style="font-weight: bold;"> Page Count </span>: {{bookDetails.volumeInfo?.pageCount}}</p>
+    <p><span style="font-weight: bold;"> Language </span>: {{bookDetails.volumeInfo?.language}}</p>
+    <p>
+      {{bookDetails.volumeInfo?.description}}
+    </p>
+    <div style="font-weight:bold">
+      Written by : 
+    </div>
+    <div *ngFor="let author of bookDetails.volumeInfo.authors">
+      <p>{{author}}</p>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" (click)="addToCartClick()">ADD TO CART</button>
+    <button mat-raised-button color="accent" (click)="buyClick()">BUY</button>
+  </mat-card-actions>
+</mat-card>

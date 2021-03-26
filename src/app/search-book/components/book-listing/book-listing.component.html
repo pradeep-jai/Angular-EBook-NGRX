@@ -1,0 +1,47 @@
+<div>
+  <mat-form-field class="example-full-width app-center">
+    <mat-label>Search in Library </mat-label>
+    <input #bar matInput type="text" (keyup.enter)="searchBooks(bar.value)" />
+  </mat-form-field>
+</div>
+
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutAlign="flex-start"
+  fxLayoutGap="50px"
+>
+  <mat-card
+    appMaterialElevation
+    *ngFor="let book of books | async"
+    fxFlex="0 1 calc(40.3% - 10px)"
+    (click)="navigate(book)"
+  >
+    <div class="header-image">
+      <div class="title-header">
+        <mat-card-header>
+          <mat-card-title>{{ book.volumeInfo.title }}</mat-card-title>
+          <mat-card-subtitle>{{ book.volumeInfo.subtitle }}</mat-card-subtitle>
+        </mat-card-header>
+      </div>
+      <img
+        mat-card-image
+        [src]="book.volumeInfo.imageLinks?.thumbnail"
+        alt="Photo of {{ book.volumeInfo.title }}"
+      />
+    </div>
+    <mat-card-content>
+      <p class="text">
+        {{ book.volumeInfo.description }}
+      </p>
+    </mat-card-content>
+    <mat-card-footer style="padding-left: 15px">
+      <div style="font-weight: bold">Written by :</div>
+      <div *ngFor="let author of book.volumeInfo.authors">
+        <p>
+          {{ author }}
+        </p>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

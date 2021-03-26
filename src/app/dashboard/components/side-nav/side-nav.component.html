@@ -1,0 +1,20 @@
+<mat-sidenav-container class="app-sidenav-container">
+    <mat-sidenav class="app-sidenav mat-elevation-z10"
+    [opened] = "!isScreenSmall()"
+    [mode] = "isScreenSmall() ? 'over' : 'side'"
+     #sidenav>
+        <mat-toolbar color="accent"><mat-icon class="app-icon">menu</mat-icon>Enlight</mat-toolbar>
+        <mat-list>
+            <a mat-list-item routerLink = "search"  style="text-decoration: none;"><mat-icon class="app-icon">search</mat-icon> Search</a>
+            <a mat-list-item routerLink = "cart" style="text-decoration: none;" (click)="clearCartBadge()"><mat-icon class="app-icon" [matBadge]="cart_value" [matBadgeHidden]="cart_hidden" matBadgeColor="accent" matBadgePosition="before">shopping_cart</mat-icon> Cart</a>
+            <a mat-list-item routerLink = "my-collections" style="text-decoration: none;" (click)="clearCollectionBadge()"><mat-icon class="app-icon" [matBadge]="collection_value" [matBadgeHidden]="collection_hidden" matBadgeColor="accent" matBadgePosition="before">collections</mat-icon> My collection</a>
+        </mat-list>
+    </mat-sidenav>
+    <div class="app-sidenav-content">
+        <app-toolbar (toggleSidenav) = "sidenav.toggle()" style="padding-bottom: 5%;"></app-toolbar>
+        <div class="wrapper">
+            <router-outlet></router-outlet>
+        </div>
+        
+    </div>
+</mat-sidenav-container>
