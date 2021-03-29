@@ -39,11 +39,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   onAddToCart() {
-    // this.fetchBookDetailsService.setCartBooks(this.bookDetails);
-    // this.fetchBookDetailsService.setAddedCartBooksCounts();
-    // this.router.navigate(['dashboard/search']);
-    // this.SideNavComponent.ngOnInit();
-
     const singleBook = this.bookDetails;
     this.store.dispatch(addBooksInCartSuccess({ book: singleBook }));
     this.store.dispatch(deleteBookSuccess({ id: this.id }));
@@ -51,7 +46,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   }
 
   onBuy() {
-    // this.router.navigateByUrl('/billing-details');
     this.router.navigate(['/billing-details', this.id]);
   }
 

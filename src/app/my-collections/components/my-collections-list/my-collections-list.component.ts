@@ -19,8 +19,6 @@ export class MyCollectionsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.submittedBookDetails = this.fetchBookDetailsService.getSubmitedBookDetails();
-    // this.fetchBookDetailsService.clearSubmittedBooksCounts();
     this.submittedBookDetails = this.store.select(getCollectionBooks);
   }
 }

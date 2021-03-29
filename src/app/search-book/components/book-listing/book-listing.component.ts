@@ -34,13 +34,6 @@ export class BookListingComponent implements OnInit {
   searchBooks(value: string) {
     this.store.dispatch(loadBooks({ bookName: value }));
     this.books = this.store.select(getBooks);
-    // this.bookService.search(value).subscribe((results) => {
-    //   this.books = results.filter((x) => x.volumeInfo.description);
-    // });
-
-    // // console.log(this.books);
-    // console.log('sssssssssssssssvvvvvvvvvvvvvvvvvvvvv');
-    // console.log(value);
   }
 
   onCardClick(item) {

@@ -61,15 +61,11 @@ export class BillingDetailsComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // this.bookDetails.submitteKey = true;
     const form_input = {
       ...this.bookDetails,
       ...form.value,
     };
-    // this.fetchBookDetailsService.setSubmitedBookDetails(form_input);
-    // this.fetchBookDetailsService.setSubmitedBooksCounts();
-    // this.openAlertDialog();
-    // this.sideNavbar.ngOnInit();
+
     const single_book = this.bookDetails;
     this.store.dispatch(addBooksInCollectionSuccess({ book: form_input }));
     if (single_book) {

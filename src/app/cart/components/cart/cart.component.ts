@@ -26,8 +26,6 @@ export class CartComponent implements OnInit {
   }
 
   onProceedToPurshase(item: any) {
-    // this.fetchBookDetailsService.setBookDetails(item);
-    // this.router.navigateByUrl('dashboard/billing-details');
     this.router.navigate(['/billing-details', item.id]);
   }
 
