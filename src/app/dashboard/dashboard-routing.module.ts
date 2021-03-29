@@ -12,37 +12,37 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    children : [
+    children: [
       {
-        path : '',
-        component : MainContentComponent
+        path: '',
+        component: MainContentComponent,
       },
       {
-        path : 'search',
-        component : BookListingComponent
+        path: 'search',
+        component: BookListingComponent,
       },
       {
-        path : 'cart',
-        component : CartComponent
+        path: 'cart',
+        component: CartComponent,
       },
       {
-        path : 'my-collections',
-        component : MyCollectionsListComponent
+        path: 'my-collections',
+        component: MyCollectionsListComponent,
       },
       {
-        path : 'book-details',
-        component : BookDetailsComponent
+        path: 'book-details/:id',
+        component: BookDetailsComponent,
       },
       {
-        path : 'billing-details',
-        component : BillingDetailsComponent
-      }
-    ]
-  }
+        path: 'billing-details/:id',
+        component: BillingDetailsComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

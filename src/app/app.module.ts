@@ -12,6 +12,9 @@ import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { BooksEffects } from './search-book/state/book.effect';
 import { booksReducer } from './search-book/state/book.reducer';
+import { appReducer } from './store/app.state';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/custom-serializer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,11 +24,14 @@ import { booksReducer } from './search-book/state/book.reducer';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    StoreModule.forRoot({ books: booksReducer }),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([BooksEffects]),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

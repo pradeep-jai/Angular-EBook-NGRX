@@ -43,8 +43,13 @@ export class BookListingComponent implements OnInit {
     // console.log(value);
   }
 
-  navigate(item) {
-    this.fetchBookDetailsService.setBookDetails(item);
-    this.router.navigate(['dashboard/book-details']);
+  onCardClick(item) {
+    let bookId: string;
+    try {
+      bookId = JSON.parse(JSON.stringify(item)).id;
+    } catch (error) {
+      console.log('Error occured when converting json into object');
+    }
+    this.router.navigate(['/book-details', bookId]);
   }
 }

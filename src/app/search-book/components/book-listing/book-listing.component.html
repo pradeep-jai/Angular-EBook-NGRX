@@ -15,7 +15,7 @@
     appMaterialElevation
     *ngFor="let book of books | async"
     fxFlex="0 1 calc(40.3% - 10px)"
-    (click)="navigate(book)"
+    (click)="onCardClick(book)"
   >
     <div class="header-image">
       <div class="title-header">
